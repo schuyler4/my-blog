@@ -1,0 +1,11 @@
+<div class="collection">
+  <% @posts.each do |post| %>
+    <a href=" /posts/<%= post.id %>" class="collection-item"><%= post.title%> |
+      <%= format_date(post.date, :short) %>
+      <% if logged_in? %>
+        <%= link_to "Edit", edit_post_path(post) %> |
+        <%= link_to "Destroy",  post,  method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </a>
+  <% end %>
+</div>
